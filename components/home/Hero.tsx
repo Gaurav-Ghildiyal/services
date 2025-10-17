@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { Page } from '../../types';
 
@@ -11,8 +10,8 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
     <section className="relative h-screen flex items-center justify-center text-center text-white">
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-10"></div>
       <img 
-        src="https://picsum.photos/1920/1080?random=1" 
-        alt="Luxury sports car"
+        src="/images/hero-background.jpg" 
+        alt="Luxury car showcasing a perfect detailing finish"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
       <div className="relative z-20 container mx-auto px-6">
@@ -24,7 +23,8 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
         </p>
         <button
           onClick={() => navigateTo('booking')}
-          className="px-8 py-4 bg-brand-blue text-white font-bold text-lg rounded-lg hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+          // FIX: Changed button color from bg-brand-blue to bg-brand-cyan and updated hover state for UI consistency.
+          className="px-8 py-4 bg-brand-cyan text-white font-bold text-lg rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg"
         >
           Schedule a Service
         </button>

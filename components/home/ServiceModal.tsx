@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import type { Service } from '../../types';
+import type { Service, Page } from '../../types';
 
 interface ServiceModalProps {
   service: Service;
   onClose: () => void;
+  navigateTo: (page: Page, sectionId?: string, service?: Service) => void;
 }
 
-const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
+const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, navigateTo }) => {
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -19,6 +20,11 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
       window.removeEventListener('keydown', handleEsc);
     };
   }, [onClose]);
+
+  const handleGenerateInvoice = () => {
+    onClose(); // Close modal before navigating
+    navigateTo('invoice', undefined, service);
+  };
 
   return (
     <div 
@@ -75,6 +81,15 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
             </ul>
           </div>
         )}
+        
+        <div className="mt-8 pt-6 border-t border-gray-200 text-right">
+          <button
+            onClick={handleGenerateInvoice}
+            className="px-6 py-3 bg-brand-dark text-white font-bold text-sm rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-105 shadow-md"
+          >
+            Generate Invoice
+          </button>
+        </div>
       </div>
     </div>
   );

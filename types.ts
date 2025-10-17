@@ -1,6 +1,4 @@
-import type { ReactElement } from 'react';
-
-export type Page = 'home' | 'booking';
+import React from 'react';
 
 export interface AddOn {
   name: string;
@@ -8,11 +6,13 @@ export interface AddOn {
 }
 
 export interface Service {
-  // FIX: Explicitly type icon props as `any` to allow cloning with new props.
-  icon: ReactElement<any>;
+  // FIX: Updated the type for `icon` to be more specific. This allows `React.cloneElement` to pass a `className` prop without a TypeScript error.
+  icon: React.ReactElement<{ className?: string }>;
   title: string;
   description: string;
   duration: string;
   pricing: string;
   addOns: AddOn[];
 }
+
+export type Page = 'home' | 'booking' | 'location' | 'invoice';

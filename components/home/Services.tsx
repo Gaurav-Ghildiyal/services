@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SERVICES } from '../../constants';
-import type { Service } from '../../types';
+import type { Service, Page } from '../../types';
 import ServiceModal from './ServiceModal';
 
 const ServiceCard: React.FC<{ service: Service; onClick: () => void }> = ({ service, onClick }) => {
@@ -22,7 +22,11 @@ const ServiceCard: React.FC<{ service: Service; onClick: () => void }> = ({ serv
   );
 };
 
-const Services: React.FC = () => {
+interface ServicesProps {
+  navigateTo: (page: Page, sectionId?: string, service?: Service) => void;
+}
+
+const Services: React.FC<ServicesProps> = ({ navigateTo }) => {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
   const openModal = (service: Service) => {
@@ -52,7 +56,7 @@ const Services: React.FC = () => {
       </section>
       
       {selectedService && (
-        <ServiceModal service={selectedService} onClose={closeModal} />
+        <ServiceModal service={selectedService} onClose={closeModal} navigateTo={navigateTo} />
       )}
     </>
   );

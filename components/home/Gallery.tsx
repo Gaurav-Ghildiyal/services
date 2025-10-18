@@ -8,14 +8,14 @@ const GalleryImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
 
 const Gallery: React.FC = () => {
   const images = [
-    { src: '/images/gallery-1.jpg', alt: 'Close-up of a glossy red sports car with perfect paint' },
-    { src: '/images/gallery-2.jpg', alt: 'Immaculate luxury car interior with clean leather seats and dashboard' },
-    { src: '/images/gallery-3.jpg', alt: 'Water beading on a car with hydrophobic ceramic coating' },
-    { src: '/images/gallery-4.jpg', alt: 'Close-up of a perfectly clean and detailed alloy wheel and tire' },
-    { src: '/images/gallery-5.jpg', alt: 'Rear view of a gleaming black sports car after detailing' },
-    { src: '/images/gallery-6.jpg', alt: 'White luxury sedan with a brilliant shine' },
-    { src: '/images/gallery-7.jpg', alt: 'Side profile of a red sports car, showcasing its sleek lines' },
-    { src: '/images/gallery-8.jpg', alt: 'Crystal clear headlight on a modern car after restoration' },
+    { src: '/images/gallery-image-01.jpg', alt: 'Side profile of a glossy blue McLaren sports car' },
+    { src: '/images/gallery-image-02.jpg', alt: 'Clean, modern white interior of a luxury vehicle' },
+    { src: '/images/gallery-image-03.jpg', alt: 'Dynamic shot of a red Ferrari in motion after detailing' },
+    { src: '/images/gallery-image-04.jpg', alt: 'Hydrophobic effect showing water beading on a black car hood' },
+    { src: '/images/gallery-image-05.jpg', alt: 'Front view of a classic yellow Lamborghini Miura' },
+    { src: '/images/gallery-image-06.jpg', alt: 'A perfectly detailed black Mercedes G-Wagon' },
+    { src: '/images/gallery-image-07.jpg', alt: 'Close-up of a crystal clear modern headlight' },
+    { src: '/images/gallery-image-08.jpg', alt: 'A classic blue Ford Mustang with a flawless finish' },
   ];
 
   return (

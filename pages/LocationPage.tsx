@@ -18,7 +18,7 @@ const LocationPage: React.FC = () => {
             {/* Map */}
             <div className="w-full h-80 md:h-full bg-gray-200 rounded-2xl shadow-lg">
                <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178650344409!2d55.27078231500966!3d25.19719698389622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a6e45b1%3A0x34241e7a5c4e7b8c!2sBurj%20Khalifa!5e0!3m2!1sen!2sae!4v1617260559661!5m2!1sen!2sae" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.851722421391!2d55.22681597592471!3d25.14076343513253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f69b0e768393b%3A0x8898687c3a9f0236!2sGulf%20Detailing%20%26%20Customs!5e0!3m2!1sen!2sae!4v1716900000000!5m2!1sen!2sae" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -33,7 +33,7 @@ const LocationPage: React.FC = () => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-brand-cyan mb-2">Address</h3>
-                <p className="text-lg text-brand-gray">123 Luxury Lane, Dubai, UAE</p>
+                <p className="text-lg text-brand-gray">Warehouse #39, AL GOZE BUILDING - Al Quoz - Al Quoz 1 - Dubai</p>
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-brand-cyan mb-2">Contact</h3>

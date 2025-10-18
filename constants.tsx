@@ -7,7 +7,7 @@ export const SERVICES: Service[] = [
     title: 'Interior Detailing',
     description: 'A deep clean of your vehicle\'s interior. We vacuum, shampoo, and condition every surface to restore its pristine look and feel.',
     duration: '4-6 Hours',
-    pricing: 'Starts at $250',
+    pricing: { type: 'fixed', priceText: 'Starts at AED 250' },
     addOns: [
       { name: 'Ozone Treatment', description: 'Eliminates stubborn odors from smoke, pets, and mildew.' },
       { name: 'Premium Leather Conditioning', description: 'Nourishes and protects leather surfaces to prevent cracking.' },
@@ -18,7 +18,7 @@ export const SERVICES: Service[] = [
     title: 'Exterior Detailing',
     description: 'Comprehensive exterior wash, clay bar treatment, and sealant application to protect your paint and bring out a brilliant shine.',
     duration: '3-5 Hours',
-    pricing: 'Starts at $200',
+    pricing: { type: 'fixed', priceText: 'Starts at AED 200' },
     addOns: [
       { name: 'Engine Bay Detailing', description: 'Safely cleans and protects the engine compartment.' },
       { name: 'Headlight Restoration', description: 'Restores clarity to foggy or yellowed headlights.' },
@@ -29,7 +29,7 @@ export const SERVICES: Service[] = [
     title: 'Paint Correction & Polishing',
     description: 'Removal of swirls, scratches, and imperfections from your paintwork, restoring a flawless, mirror-like finish.',
     duration: '8-16 Hours',
-    pricing: 'Starts at $600',
+    pricing: { type: 'fixed', priceText: 'Starts at AED 600' },
     addOns: [
       { name: 'Glass Polishing', description: 'Removes water spots and minor scratches from glass.' },
       { name: 'Exterior Trim Restoration', description: 'Brings faded plastic trim back to a deep, black finish.' },
@@ -37,21 +37,36 @@ export const SERVICES: Service[] = [
   },
   {
     icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-    title: 'Nano Ceramic Coating',
-    description: 'Application of a liquid polymer that chemically bonds with the factory paint, creating a layer of durable, hydrophobic protection.',
-    duration: '24-48 Hours (incl. curing)',
-    pricing: 'Starts at $900',
-    addOns: [
-      { name: 'Wheel & Caliper Coating', description: 'Protects wheels from brake dust and makes cleaning easier.' },
-      { name: 'Full Glass Coating', description: 'Improves visibility in rain with a hydrophobic glass treatment.' },
-    ],
+    title: 'Ceramic Coating',
+    description: 'Protect your vehicle with a durable, high-gloss ceramic layer. Our packages offer varying levels of longevity and protection, including paint polishing and clay bar treatment as standard. Choose the right package for your needs.',
+    duration: '1-4 Days',
+    pricing: {
+      type: 'packages',
+      vehicleTypes: {
+        'Sedan / Sports Car': {
+          'Silver': 1000,
+          'Gold': 1500,
+          'Platinum': 2200,
+        },
+        'SUV': {
+          'Silver': 1200,
+          'Gold': 1800,
+          'Platinum': 2500,
+        },
+      },
+    },
+    addOns: [],
   },
   {
     icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V5z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m4 0h1" /></svg>,
     title: 'Paint Protection Film (PPF)',
-    description: 'A transparent, self-healing film applied to protect your vehicle from rock chips, scratches, and environmental contaminants.',
-    duration: '1-3 Days',
-    pricing: 'Starts at $1500',
+    description: 'A transparent, self-healing film to protect from rock chips and scratches. All prices include surface preparation, professional installation, up to 10 years warranty, and optional ceramic coating. Prices may vary based on finish, brand, and vehicle condition.',
+    duration: '2-4 Days',
+    pricing: {
+        type: 'tiered',
+        description: `**Standard Vehicles**\n- Sedan (e.g., BMW 5 Series): Starts at AED 8,000\n- SUV (e.g., Range Rover Sport): Starts at AED 10,000\n\n**Premium Vehicles**\n- Mercedes G-Class: AED 12,000\n- BMW 7 Series (LWB): AED 11,000\n- Rolls-Royce Cullinan: AED 14,000\n- Ferrari / Lamborghini: AED 13,000–15,000`,
+        basePrice: 8000,
+    },
     addOns: [
       { name: 'Full Front Coverage', description: 'Includes full hood, fenders, bumper, and mirrors.' },
       { name: 'Track Package', description: 'Adds coverage for rocker panels and rear impact areas.' },
@@ -59,10 +74,14 @@ export const SERVICES: Service[] = [
   },
   {
     icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4H7zm0 0a4 4 0 004-4V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12a4 4 0 004 4zm0 0l-1-1" /></svg>,
-    title: 'Vinyl Wrapping',
-    description: 'Change your car\'s appearance with a custom vinyl wrap. A wide range of colors and finishes are available.',
+    title: 'Color Change Wrapping',
+    description: 'Change your car\'s appearance with a custom vinyl wrap. All prices include surface preparation and professional installation. Prices may vary based on finish (gloss/matte), brand, and vehicle condition.',
     duration: '3-5 Days',
-    pricing: 'Starts at $3000',
+    pricing: {
+        type: 'tiered',
+        description: `**Standard Vehicles**\n- Sedan (e.g., BMW 5 Series): Starts at AED 8,000\n- SUV (e.g., Porsche Cayenne): Starts at AED 10,000\n\n**Premium Vehicles**\n- Mercedes G-Class: AED 12,000\n- BMW 7 Series (LWB): AED 11,000\n- Rolls-Royce Cullinan: AED 14,000\n- Ferrari / Lamborghini: AED 13,000–15,000`,
+        basePrice: 8000,
+    },
     addOns: [
       { name: 'Chrome Delete', description: 'Covers all chrome trim in black or another color.' },
       { name: 'Custom Graphics & Livery', description: 'Add a personal touch with custom-designed graphics.' },
@@ -73,7 +92,7 @@ export const SERVICES: Service[] = [
     title: 'Window Tint',
     description: 'Professional window tinting for enhanced privacy, UV protection, and a sleek, custom look.',
     duration: '2-4 Hours',
-    pricing: 'Starts at $350',
+    pricing: { type: 'fixed', priceText: 'Starts at AED 350' },
     addOns: [
       { name: 'Ceramic Tint Upgrade', description: 'Superior heat rejection and clarity compared to standard tint.' },
       { name: 'Windshield Tint', description: 'A nearly clear film that blocks UV rays and heat.' },
@@ -84,7 +103,7 @@ export const SERVICES: Service[] = [
     title: 'Paintless Dent Repair (PDR)',
     description: 'An innovative process to remove minor dents and dings from your vehicle\'s body panels without affecting the original paint.',
     duration: '1-4 Hours',
-    pricing: 'Quote Per Dent',
+    pricing: { type: 'quote', priceText: 'Quote Per Dent' },
     addOns: [
       { name: 'Minor Scratch Touch-up', description: 'Conceal small scratches in the affected area.' },
       { name: 'Panel Polish', description: 'Polish the repaired panel to ensure a perfect finish.' },
@@ -95,10 +114,16 @@ export const SERVICES: Service[] = [
     title: 'Face Lift',
     description: 'Upgrade your vehicle\'s look with modern body kits, lighting, and accessories for a complete aesthetic transformation.',
     duration: 'Project Dependant',
-    pricing: 'Quote-Based',
+    pricing: { type: 'quote', priceText: 'Quote-Based' },
     addOns: [
       { name: 'Interior Customization', description: 'Custom upholstery, lighting, and trim.' },
       { name: 'Performance Upgrades', description: 'Enhancements for exhaust, suspension, and more.' },
     ],
   },
 ];
+
+export const CERAMIC_PACKAGES = {
+    'Silver': { warranty: '2-Year', features: ['Ceramic Coating', 'Clay Bar', 'Car Polishing'] },
+    'Gold': { warranty: '5-Year', features: ['Everything in Silver', 'Steam Cleaner', 'Wheels Detailing & Coating', 'Engine Detailing', 'Interior Detailing & Coating'] },
+    'Platinum': { warranty: '10-Year', features: ['Everything in Gold', 'Highest-grade coating'] }
+};

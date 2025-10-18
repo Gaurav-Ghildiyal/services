@@ -5,19 +5,15 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import BookingPage from './pages/BookingPage';
 import LocationPage from './pages/LocationPage';
-import InvoicePage from './pages/InvoicePage';
+import InvoiceGeneratorPage from './pages/InvoiceGeneratorPage';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [sectionToScrollTo, setSectionToScrollTo] = useState<string | null>(null);
-  const [invoiceService, setInvoiceService] = useState<Service | null>(null);
 
-  const navigateTo = (page: Page, sectionId?: string, service?: Service) => {
+  const navigateTo = (page: Page, sectionId?: string) => {
     setCurrentPage(page);
-    if (page === 'invoice' && service) {
-      setInvoiceService(service);
-    }
-
+    
     if (sectionId) {
       setSectionToScrollTo(sectionId);
     } else {
@@ -54,7 +50,7 @@ const App: React.FC = () => {
       home: 'Home | Gulf Detailing Customs',
       booking: 'Booking | Gulf Detailing Customs',
       location: 'Location | Gulf Detailing Customs',
-      invoice: 'Invoice | Gulf Detailing Customs',
+      invoiceGenerator: 'Invoice Generator | Gulf Detailing Customs',
     };
     document.title = pageTitles[currentPage];
   }, [currentPage]);
@@ -67,8 +63,8 @@ const App: React.FC = () => {
         return <BookingPage />;
       case 'location':
         return <LocationPage />;
-      case 'invoice':
-        return invoiceService ? <InvoicePage service={invoiceService} navigateTo={navigateTo} /> : <HomePage navigateTo={navigateTo} />;
+      case 'invoiceGenerator':
+        return <InvoiceGeneratorPage navigateTo={navigateTo} />;
       default:
         return <HomePage navigateTo={navigateTo} />;
     }
@@ -80,7 +76,7 @@ const App: React.FC = () => {
       <main className="flex-grow">
         {renderPage()}
       </main>
-      <Footer />
+      <Footer navigateTo={navigateTo} />
     </div>
   );
 };

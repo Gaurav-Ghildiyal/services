@@ -4,6 +4,17 @@ import type { Service, Page } from '../../types';
 import ServiceModal from './ServiceModal';
 
 const ServiceCard: React.FC<{ service: Service; onClick: () => void }> = ({ service, onClick }) => {
+  let priceDisplay = '';
+  if (service.pricing.type === 'fixed' || service.pricing.type === 'quote') {
+    priceDisplay = service.pricing.priceText;
+  } else if (service.pricing.type === 'packages') {
+    const sedanPrice = service.pricing.vehicleTypes['Sedan / Sports Car']['Silver'];
+    priceDisplay = `Starts at AED ${sedanPrice}`;
+  } else if (service.pricing.type === 'tiered') {
+     priceDisplay = `Starts at AED ${service.pricing.basePrice}`;
+  }
+
+
   return (
     <button
       onClick={onClick}
@@ -14,7 +25,7 @@ const ServiceCard: React.FC<{ service: Service; onClick: () => void }> = ({ serv
         {service.icon}
       </div>
       <h3 className="text-xl font-bold text-brand-dark mb-2">{service.title}</h3>
-      <p className="text-brand-gray text-sm flex-grow">{service.description}</p>
+      <p className="text-brand-gray text-sm flex-grow">{service.description.split('.')[0]}.</p>
       <span className="mt-4 text-brand-cyan font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         View Details &rarr;
       </span>
@@ -23,7 +34,7 @@ const ServiceCard: React.FC<{ service: Service; onClick: () => void }> = ({ serv
 };
 
 interface ServicesProps {
-  navigateTo: (page: Page, sectionId?: string, service?: Service) => void;
+    navigateTo: (page: Page) => void;
 }
 
 const Services: React.FC<ServicesProps> = ({ navigateTo }) => {
